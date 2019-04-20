@@ -1681,3 +1681,338 @@ ActionController::ParameterMissing (param is missing or the value is empty: user
   
 app/controllers/registrations_controller.rb:20:in `user_params'
 app/controllers/registrations_controller.rb:7:in `create'
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/isidora/.rvm/gems/ruby-2.5.1/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for ::1 at 2019-04-20 16:02:04 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 153ms (Views: 148.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-04-20 16:02:12 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M5ljq27fN/sfFM7CVyo3OOubPdDf/ni90fg+c1Aq6edrHS85Qv0oOGijEiUpiMj46SiSXwCkJj0rXMDTJerDew==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 2.7ms)
+
+
+  
+NoMethodError (undefined method `password' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:7:in `create'
+Started GET "/sign_in" for ::1 at 2019-04-20 16:02:31 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 79ms (Views: 47.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:02:41 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RLlbKzs53YRvHCABVtYtIIYxXvM1ETC4dDGLailC/6AKuaYqxCXKo1LoPJJiqgiIklOxShBxD5xkGii3KgSlCw==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 20ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:02:41 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 50ms (Views: 45.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:02:45 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tSXIL5l78S7ODCJzzDLyXJ02/Q1GWi1CO4ESunCnu13toYS9tVnu7bm7/pSykA2cn4VSgpkAc8LBJewaBWeRwQ==", "registrations"=>{"name"=>"", "last_name"=>"", "email"=>"", "phone"=>"", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 18ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:02:45 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 50ms (Views: 44.8ms | ActiveRecord: 0.0ms)
+
+
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/isidora/.rvm/gems/ruby-2.5.1/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started POST "/login" for ::1 at 2019-04-20 16:06:56 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o8xYWkhy9FDvaGdrEC8Y8sRVmvovHdKxsETswjmdVVT7SBTIZFDrk5jfu4xujecyxuY1dfBHjDFK4BJiTF1/yA==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `password' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:7:in `create'
+Started GET "/" for ::1 at 2019-04-20 16:07:01 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 192ms (Views: 190.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-04-20 16:07:09 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2YoyVjb65YWhUTKXWcbXnQDwbySM25l8b0WauXQsIRGBDn7EGtj6Rtbm7nAnZChdAkPAq1OBx/yV4WQZAewLjQ==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `password' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:7:in `create'
+Started POST "/__web_console/repl_sessions/8e9df57434b1b7ba901321b06a8f01a0/trace" for ::1 at 2019-04-20 16:07:26 -0400
+Started POST "/login" for ::1 at 2019-04-20 16:08:18 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2YoyVjb65YWhUTKXWcbXnQDwbySM25l8b0WauXQsIRGBDn7EGtj6Rtbm7nAnZChdAkPAq1OBx/yV4WQZAewLjQ==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:7:in `create'
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /home/isidora/.rvm/gems/ruby-2.5.1/gems/activesupport-5.2.3/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/sign_in" for ::1 at 2019-04-20 16:12:56 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 221ms (Views: 197.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:13:04 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nu4LHx8DnPI3xvpjetZTcXbHMLYVakgyjZL0DkHNbIBuakeNMyGDMUBxJoQEdKyxdHSfOcowFrJ3NgquNA1GHA==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 159ms (ActiveRecord: 0.5ms)
+
+
+  
+NameError (undefined local variable or method `registration_path' for #<RegistrationsController:0x00007fb2f805a318>
+Did you mean?  registrations_path
+               registrations_url):
+  
+app/controllers/registrations_controller.rb:16:in `create'
+Started POST "/sign_in" for ::1 at 2019-04-20 16:13:54 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nu4LHx8DnPI3xvpjetZTcXbHMLYVakgyjZL0DkHNbIBuakeNMyGDMUBxJoQEdKyxdHSfOcowFrJ3NgquNA1GHA==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 224ms (ActiveRecord: 2.3ms)
+
+
+  
+NameError (undefined local variable or method `registration_url' for #<RegistrationsController:0x00007fb2f54f2fb8>
+Did you mean?  registrations_url):
+  
+app/controllers/registrations_controller.rb:16:in `create'
+Started POST "/sign_in" for ::1 at 2019-04-20 16:14:12 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nu4LHx8DnPI3xvpjetZTcXbHMLYVakgyjZL0DkHNbIBuakeNMyGDMUBxJoQEdKyxdHSfOcowFrJ3NgquNA1GHA==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 24ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:14:12 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:14:21 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8NNnPiq+O58CVVKFOHazwk2ozj+eQ2XKueHoHYFObzOoVyusBpwkXHXijmJG1EwCTxthsEEZO0pDRRa99I5Frw==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:14:21 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 42ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:15:07 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 48ms (Views: 26.1ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:15:15 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5fcZP2K0ZGKmhOKQvWSvUZNks04EsaWDQqkMD3qoPTC9c1WtTpZ7odEzPnfDxlCRkdccwdvr+wO4DfKvD2gXrA==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 23ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:15:15 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 74ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:15:39 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 44ms (Views: 19.6ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:15:47 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6ygUsBLEr1PSx3kzaV4gEN0IcogzPN3GzdKvGC+e5FizrFgiPuawkKVwpdQX/N/Q37vdB+xmg0Y3dlG4Wl7OxA==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:15:47 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-04-20 16:15:50 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 67ms (Views: 61.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-04-20 16:15:56 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rfCgLODMbaY1dSz/F6g7WX4vsihWdQF/VWvQV4jjCrD1dOy+zO5yZULC8BhpCsSZfJwdp4kvX/+vzy73/SMgLA==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:7:in `create'
+Started POST "/login" for ::1 at 2019-04-20 16:20:13 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rfCgLODMbaY1dSz/F6g7WX4vsihWdQF/VWvQV4jjCrD1dOy+zO5yZULC8BhpCsSZfJwdp4kvX/+vzy73/SMgLA==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-04-20 16:20:13 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-04-20 16:20:21 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rcQTJE0DszImzB3cXpeS1u9v+X4h3bz5EsiHgC7ZPZL1QF+2YSGs8VF7wTsgNW0W7dxW8f6H4nnobHkgWxkXDg==", "session"=>{"email"=>"iaramirez@miuandes.cl", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramirez@miuandes.cl"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-04-20 16:20:21 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 54ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:20:22 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 66ms (Views: 62.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign_in" for ::1 at 2019-04-20 16:20:30 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+K8eIFlK0T2/55FbXMEVF+pv32GMlH7JG2yTY9llDia2r+MhplbGGoITjchovTC//g0w2Kn0Qe0LRzC+2iNUjQ==", "registrations"=>{"name"=>"Isidora", "last_name"=>"Ramirez", "email"=>"iaramiez@miuandes.cl", "phone"=>"85955890", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "iaramiez@miuandes.cl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 50ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/sign_in" for ::1 at 2019-04-20 16:20:30 -0400
+Processing by RegistrationsController#new as HTML
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 68ms (Views: 62.8ms | ActiveRecord: 0.0ms)
+
+
